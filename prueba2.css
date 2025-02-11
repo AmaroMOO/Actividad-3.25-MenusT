@@ -1,0 +1,149 @@
+/* Estilos generales */
+body {
+    display: flex;
+    justify-content: flex-start; /* Alinea el contenido al inicio horizontalmente */
+    align-items: flex-start; /* Alinea el contenido al inicio verticalmente */
+    height: 100vh;
+    background-color: #add8e6; /* Cambia el fondo a color azul claro */
+    margin: 0;
+    font-family: Arial, sans-serif;
+    padding: 20px; /* Agrega padding para que el botón no toque los bordes */
+}
+
+/* Contenedor del menú circular */
+.menu-circular {
+    position: relative;
+    margin-left: 20px; /* Aumenta el espacio a la izquierda */
+    margin-top: 20px; /* Aumenta el espacio arriba */
+}
+
+/* Oculta el checkbox */
+#menu-toggle {
+    display: none;
+}
+
+/* Botón del menú (icono de hamburguesa) */
+.menu-btn {
+    position: absolute;
+    top: 10px; /* Ajusta la posición desde arriba */
+    left: 10px; /* Ajusta la posición desde la izquierda */
+    width: 120px; /* Aumenta el tamaño del botón */
+    height: 120px; /* Aumenta el tamaño del botón */
+    border-radius: 50%;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+/* Estilo de la línea del botón */
+.menu-btn span {
+    width: 60px; /* Aumenta el tamaño de la línea */
+    height: 6px; /* Aumenta el tamaño de la línea */
+    background-color: #fff;
+    position: relative;
+    transition: background-color 0.5s;
+}
+
+.menu-btn span::before,
+.menu-btn span::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    transition: transform 0.5s;
+}
+
+.menu-btn span::before {
+    transform: translateY(-18px); /* Ajusta la posición de la línea */
+}
+
+.menu-btn span::after {
+    transform: translateY(18px); /* Ajusta la posición de la línea */
+}
+
+/* Estilo de los elementos del menú */
+.menu-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    width: 300px; /* Aumenta el tamaño del submenú */
+    height: 300px; /* Aumenta el tamaño del submenú */
+    border-radius: 50%;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transition: transform 0.5s;
+}
+
+.menu-items li {
+    position: absolute;
+}
+
+.menu-items li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px; /* Aumenta el tamaño del texto */
+    transition: color 0.3s;
+    text-align: center; /* Centra el texto */
+    width: 100%; /* Asegura que el enlace ocupe todo el ancho del contenedor */
+    padding: 5px; /* Agrega padding */
+    text-shadow: 1px 1px 2px #000; /* Agrega un borde a cada letra */
+}
+
+/* Posiciona los elementos en forma circular */
+.menu-items li:nth-child(1) {
+    transform: rotate(0deg) translate(150px) rotate(0deg); /* Ajusta la posición */
+}
+
+.menu-items li:nth-child(2) {
+    transform: rotate(72deg) translate(150px) rotate(-72deg); /* Ajusta la posición */
+}
+
+.menu-items li:nth-child(3) {
+    transform: rotate(144deg) translate(150px) rotate(-144deg); /* Ajusta la posición */
+}
+
+.menu-items li:nth-child(4) {
+    transform: rotate(216deg) translate(150px) rotate(-216deg); /* Ajusta la posición */
+}
+
+.menu-items li:nth-child(5) {
+    transform: rotate(288deg) translate(150px) rotate(-288deg); /* Ajusta la posición */
+}
+
+/* Animaciones al activar el menú */
+#menu-toggle:checked + .menu-btn {
+    transform: rotate(45deg);
+}
+
+#menu-toggle:checked + .menu-btn span {
+    background-color: transparent;
+}
+
+#menu-toggle:checked + .menu-btn span::before {
+    transform: rotate(45deg) translate(0, 0);
+}
+
+#menu-toggle:checked + .menu-btn span::after {
+    transform: rotate(-45deg) translate(0, 0);
+}
+
+#menu-toggle:checked ~ .menu-items {
+    transform: scale(1);
+}
+
+/* Ajusta la posición del submenú para que no se superponga */
+.menu-items li:hover > .content {
+    display: block;
+    position: absolute;
+    left: 100%; /* Mueve el submenú hacia la derecha del menú principal */
+    top: 0;
+    transform: translateX(10px); /* Añade un pequeño espacio entre el menú principal y el submenú */
+}
